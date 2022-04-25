@@ -1,6 +1,5 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { first } from 'rxjs';
 
 import { HelloWorldService } from './hello-world.service';
 
@@ -34,6 +33,6 @@ describe('HelloWorldService', () => {
       url: 'http://localhost:3333/api/hello'
     });
 
-    req.flush(1);
+    req.flush(expectedResult);
   })
 });

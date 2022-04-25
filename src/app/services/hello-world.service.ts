@@ -9,6 +9,7 @@ export class HelloWorldService {
   constructor(private http: HttpClient) { }
 
   helloWorld() {
-    return this.http.get<any>('http://localhost:3333/api/hello')
+    console.log("hit");
+    return this.http.get<any>('http://localhost:8181/hello')
   }
 }
