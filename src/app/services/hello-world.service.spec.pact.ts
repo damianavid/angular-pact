@@ -30,7 +30,7 @@ pactWith({
             willRespondWith: {
                 status: 200,
                 body: {
-                    status: Matchers.like('Welcome to api!')
+                    message: Matchers.like('Welcome to api!')
                 },
             },
             withRequest: {
@@ -44,16 +44,10 @@ pactWith({
             message: "Welcome to api!"
           };
       
-          service.helloWorld().subscribe((res) => {
+          service.helloWorld(provider.mockService.baseUrl).subscribe((res) => {
             expect(res).toEqual(expectedResult)
           });
       
-          const req = httpMock.expectOne({
-            method: 'GET',
-            url: 'http://localhost:8181/hello'
-          });
-      
-          req.flush(expectedResult);
         })
     });
 })

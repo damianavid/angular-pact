@@ -8,8 +8,8 @@ export class HelloWorldService {
 
   constructor(private http: HttpClient) { }
 
-  helloWorld() {
+  helloWorld(url:string) {
     console.log("hit");
-    return this.http.get<any>('http://localhost:8181/hello')
+    return this.http.get<any>(url + '/hello')
   }
 }
