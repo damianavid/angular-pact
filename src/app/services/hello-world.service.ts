@@ -8,9 +8,8 @@ export class HelloWorldService {
 
   constructor(private http: HttpClient) { }
 
-  helloWorld(url: string) {
+  helloWorld(url:string) {
     console.log("hit");
-    const res = this.http.get(url + '/hello')
-    return res;
+    return this.http.get<any>(url + '/hello')
   }
 }

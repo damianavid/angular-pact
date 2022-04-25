@@ -18,10 +18,10 @@
         "headers": {
         },
         "body": {
-          "status": "Welcome to api!"
+          "message": "Welcome to api!"
         },
         "matchingRules": {
-          "$.body.status": {
+          "$.body.message": {
             "match": "type"
           }
         }

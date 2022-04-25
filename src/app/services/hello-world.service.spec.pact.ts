@@ -30,7 +30,7 @@ pactWith({
             willRespondWith: {
                 status: 200,
                 body: {
-                    status: Matchers.like('Welcome to api!')
+                    message: Matchers.like('Welcome to api!')
                 },
             },
             withRequest: {
@@ -48,12 +48,6 @@ pactWith({
             expect(res).toEqual(expectedResult)
           });
       
-        //   const req = httpMock.expectOne({
-        //     method: 'GET',
-        //     url: provider.mockService.baseUrl + '/hello'
-        //   });
-      
-        //   req.flush(expectedResult);
         })
     });
 })
