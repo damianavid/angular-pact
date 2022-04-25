@@ -41,19 +41,19 @@ pactWith({
 
         it('returns hello world', async () => {
         const expectedResult = {
-            message: "Welcome to api!"
+            status: "Welcome to api!"
           };
       
-          service.helloWorld().subscribe((res) => {
+          service.helloWorld(provider.mockService.baseUrl).subscribe((res) => {
             expect(res).toEqual(expectedResult)
           });
       
-          const req = httpMock.expectOne({
-            method: 'GET',
-            url: 'http://localhost:8181/hello'
-          });
+        //   const req = httpMock.expectOne({
+        //     method: 'GET',
+        //     url: provider.mockService.baseUrl + '/hello'
+        //   });
       
-          req.flush(expectedResult);
+        //   req.flush(expectedResult);
         })
     });
 })

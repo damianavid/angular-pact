@@ -1,0 +1,36 @@
+{
+  "consumer": {
+    "name": "angular-plain-2"
+  },
+  "provider": {
+    "name": "HellowWorldService"
+  },
+  "interactions": [
+    {
+      "description": "A request for API hello world",
+      "providerState": "server is healthy",
+      "request": {
+        "method": "GET",
+        "path": "/hello"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": {
+          "status": "Welcome to api!"
+        },
+        "matchingRules": {
+          "$.body.status": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
