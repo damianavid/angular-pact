@@ -6,18 +6,21 @@ import { pactWith } from 'jest-pact';
 
 import * as path from 'path';
 import { HelloWorldService } from './hello-world.service';
+import { HttpTestingController } from '@angular/common/http/testing';
 
 pactWith({
     consumer: 'angular-plain-2',
     provider: 'HellowWorldService'}, provider => {
     let service: HelloWorldService;
+    let httpMock: HttpTestingController;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [HttpClientModule],
-            providers: [HelloWorldService],
+            providers: [HelloWorldService, HttpTestingController],
         });
-        service = TestBed.inject(HelloWorldService)
+        service = TestBed.inject(HelloWorldService);
+        httpMock = TestBed.inject(HttpTestingController);
     });
 
     describe('hello world', () => {
@@ -36,12 +39,22 @@ pactWith({
             }
         }));
 
-        it('returns hello world', async () => 
-            service.helloWorld().subscribe(res => {
-                console.log("response", res);
-                expect(res).toBe("random");
-            })
-        )
+        it('returns hello world', async () => {
+        const expectedResult = {
+            message: "Welcome to api!"
+          };
+      
+          service.helloWorld().subscribe((res) => {
+            expect(res).toEqual(expectedResult)
+          });
+      
+          const req = httpMock.expectOne({
+            method: 'GET',
+            url: 'http://localhost:8181/hello'
+          });
+      
+          req.flush(expectedResult);
+        })
     });
 })
 
