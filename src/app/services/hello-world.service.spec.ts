@@ -18,21 +18,4 @@ describe('HelloWorldService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-
-  it("should retrieve hello world", () => {
-    const expectedResult = {
-      message: "Welcome to api!"
-    };
-
-    // service.helloWorld().subscribe((res) => {
-    //   expect(res).toEqual(expectedResult)
-    // });
-
-    const req = httpMock.expectOne({
-      method: 'GET',
-      url: 'http://localhost:3333/api/hello'
-    });
-
-    req.flush(expectedResult);
-  })
 });

@@ -9,7 +9,6 @@ export class HelloWorldService {
   constructor(private http: HttpClient) { }
 
   helloWorld(url:string) {
-    console.log("hit");
     return this.http.get<any>(url + '/hello')
   }
 }

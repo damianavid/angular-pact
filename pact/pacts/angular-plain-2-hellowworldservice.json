@@ -19,11 +19,6 @@
         },
         "body": {
           "message": "Welcome to api!"
-        },
-        "matchingRules": {
-          "$.body.message": {
-            "match": "type"
-          }
         }
       }
     }
