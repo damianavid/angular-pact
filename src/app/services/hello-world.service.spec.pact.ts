@@ -5,6 +5,7 @@ import { pactWith } from 'jest-pact';
 
 import { HelloWorldService } from './hello-world.service';
 import { HttpTestingController } from '@angular/common/http/testing';
+import { Matchers } from '@pact-foundation/pact';
 
 pactWith({
     consumer: 'angular-plain-2',
@@ -28,7 +29,7 @@ pactWith({
             willRespondWith: {
                 status: 200,
                 body: {
-                    message: 'Welcome to api!'
+                    message: Matchers.like('Welcome to api!')
                 },
             },
             withRequest: {
@@ -37,12 +38,13 @@ pactWith({
             }
         }));
 
-        it('returns Welcome to api!', async () => {
+        it('returns Welcome to api!', (done) => {
             service.helloWorld(provider.mockService.baseUrl).subscribe((res) => {
             console.log("res", res);  
             expect(res).toEqual({
-                'message': 'Welcome to api!'
+                message: 'Welcome to api!'
             })
+            done();
             });
         })
     });

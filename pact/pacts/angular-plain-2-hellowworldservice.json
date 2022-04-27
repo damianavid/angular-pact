@@ -21,6 +21,27 @@
           "message": "Welcome to api!"
         }
       }
+    },
+    {
+      "description": "A request for API",
+      "providerState": "server is healthy",
+      "request": {
+        "method": "GET",
+        "path": "/hello"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": {
+          "message": "Welcome to api!"
+        },
+        "matchingRules": {
+          "$.body.message": {
+            "match": "type"
+          }
+        }
+      }
     }
   ],
   "metadata": {
